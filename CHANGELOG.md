@@ -1,3 +1,7 @@
+## 1.5.0-sig.1 (fork build, not an upstream release)
+
+- v1.5.0 plus SIG security feature profile (`sdwan_sig_security_feature_profile`) and SIG feature (`sdwan_sig_security_sig_feature`) via `feature_profiles.sig_security_profiles` and `policy_groups[].sig_security`; needs a provider build with `sdwan_sig_security_sig_feature`
+
 ## 1.5.0
 
 - **BREAKING CHANGE**: system AAA TACACS/RADIUS `group_name` auto-generation format changed; name is now resolved in priority order: explicit `group_name` field → `tacacs-{index}-{vpn}` / `radius-{index}-{vpn}` (if `vpn` is set) → `tacacs-{index}-{index}` / `radius-{index}-{index}` (fallback); previously only `tacacs-{vpn}` / `radius-{vpn}` (without index) was generated; to avoid a breaking push when upgrading, set `group_name` explicitly to the previously auto-generated name (e.g. add `group_name: tacacs-511` for a TACACS group with `vpn: 511`) — this preserves the existing group name in Manager without any configuration change
